@@ -1,9 +1,10 @@
 import Button from "../Button"
+import {ChangeEvent, FormEventHandler, } from 'react'
 
 interface UserFormProps {
-  handelName:(event:React.FormEvent<HTMLInputElement>) => void,
+  handelName:(event:ChangeEvent<HTMLInputElement>) => void,
   playerName:string,
-  handelSubmit:
+  handelSubmit:FormEventHandler
 }
 
 const UserForm = ({handelName,playerName, handelSubmit}:UserFormProps) => {
@@ -11,7 +12,7 @@ const UserForm = ({handelName,playerName, handelSubmit}:UserFormProps) => {
 console.log('playerName :>> ', playerName);
   return (
     <div>
-        <form>
+        <form onSubmit={handelSubmit}>
             <label>What is your name?</label>
             <input type='text' onChange={handelName} value={playerName}  required/>
             <Button text="submit" />
