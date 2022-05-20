@@ -2,6 +2,7 @@ import UserForm from "./components/UserForm";
 import { useState, ChangeEvent, FormEventHandler } from "react";
 import InfoBar from "./components/InfoBar";
 import Display from "./components/Display";
+import ActionBar from "./components/ActionBar";
 
 function App() {
   const [showForm, setShowForm] = useState(true);
@@ -30,6 +31,7 @@ function App() {
       )}
       <InfoBar playerName={playerName}/>
       <Display/>
+      <ActionBar/>
     </div>
   );
 }
