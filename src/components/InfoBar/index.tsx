@@ -1,5 +1,6 @@
 import Button from "../Button"
 import Counter from "../Counter"
+import style from "./index.module.css"
 
 interface InfoBarProps{
     playerName:string
@@ -7,9 +8,9 @@ interface InfoBarProps{
 
 const InfoBar = ({playerName}:InfoBarProps) => {
   return (
-    <div>
+    <div className={style.container}>
         <Counter playerName={playerName}/>
-        <Button text="Reset"/>
+        <Button text="Reset" color="red" />
     </div>
   )
 }

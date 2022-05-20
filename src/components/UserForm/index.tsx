@@ -15,7 +15,7 @@ console.log('playerName :>> ', playerName);
         <form onSubmit={handelSubmit}>
             <label>What is your name?</label>
             <input type='text' onChange={handelName} value={playerName}  required/>
-            <Button text="submit" />
+            <Button text="submit" radius="7px" color="lightblue" />
             
         </form>
     </div>
