@@ -10,7 +10,7 @@ function App() {
   const [playerName, setPlayerName] = useState(``);
   const [playerPoints, setPlayerPoints] = useState(0);
   const [computerPoints, setComputerPoints] = useState(0);
-  const [playerSelection, setPlayerSelection] = useState('')
+ 
 
   const handelName = (event: ChangeEvent<HTMLInputElement>) =>
     setPlayerName(event.currentTarget.value);
@@ -20,7 +20,7 @@ function App() {
     setShowForm(!showForm);
     //setShowGame(!showGame)
   };
-  const handelOutcome = () => {
+  const handelOutcome = (playerSelection:string) => {
     
     const computerOutcomes = ["rock", "paper", "scissors", "lizard", "Spock"];
 
@@ -120,7 +120,7 @@ function App() {
         <>
           <InfoBar playerName={playerName} playerPoints={playerPoints} computerPoints={computerPoints}/>
           <Display />
-          <ActionBar handelOutcome={handelOutcome} setPlayerSelection={setPlayerSelection} />
+          <ActionBar handelOutcome={handelOutcome} />
         </>
       )}
     </div>
