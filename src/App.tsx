@@ -18,22 +18,44 @@ function App() {
   const [computerPoints, setComputerPoints] = useState(0);
   const [playerImage, setPlayerImage] = useState(incognito);
   const [computerImage, setComputerImage] = useState(incognito);
+
+
   const handelName = (event: ChangeEvent<HTMLInputElement>) =>
     setPlayerName(event.currentTarget.value);
+const handelReset=()=>{
+  setComputerPoints(0);
+  setPlayerPoints(0);
+  setComputerImage(incognito);
+  setPlayerImage(incognito);
+}
 
   const handelSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     setShowForm(!showForm);
     //setShowGame(!showGame)
   };
+
   const handelOutcome = (playerSelection: string) => {
+//set images for player selection
+if(playerSelection==='rock'){
+  setPlayerImage(rock);
+} else if(playerSelection==='paper'){
+  setPlayerImage(paper);
+}else if(playerSelection==='scissors'){
+  setPlayerImage(scissors);
+}else if(playerSelection==='lizard'){
+  setPlayerImage(lizard);
+}else if(playerSelection==='Spock'){
+  setPlayerImage(Spock);
+}
+
     const computerOutcomes = ["rock", "paper", "scissors", "lizard", "Spock"];
 
     let computerSelection =
       computerOutcomes[Math.floor(Math.random() * computerOutcomes.length)];
     console.log("computerSelection", computerSelection);
     console.log("playerSelection", playerSelection);
-
+//set images for computer selection
     if(computerSelection==='rock'){
       setComputerImage(rock);
     } else if(computerSelection==='paper'){
@@ -143,6 +165,7 @@ function App() {
             playerName={playerName}
             playerPoints={playerPoints}
             computerPoints={computerPoints}
+            handelReset={handelReset}
           />
           <Display playerImage={playerImage} computerImage={computerImage} />
           <ActionBar handelOutcome={handelOutcome}  setPlayerImage={setPlayerImage}/>

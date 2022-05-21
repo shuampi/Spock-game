@@ -16,11 +16,11 @@ interface ActionBarProps{
 const ActionBar = ({handelOutcome, setPlayerSelection,  setPlayerImage}:ActionBarProps) => {
   return (
     <div className={style.container}>
-        <Button text="Rock" onClick={()=>{handelOutcome('rock'); setPlayerImage?.(rock) }}/>
-        <Button text="Paper"  onClick={()=>{handelOutcome('paper'); setPlayerImage?.(paper)}}/>
-        <Button text="Scissors"  onClick={()=>{handelOutcome('scissors'); setPlayerImage?.(scissors)}}/>
-        <Button text="Spock"  onClick={()=>{handelOutcome('Spock'); setPlayerImage?.(Spock)}}/>
-        <Button text="Lizard"  onClick={()=>{handelOutcome('lizard'); setPlayerImage?.(lizard)}}/>
+        <Button text="Rock" onClick={()=>{handelOutcome('rock'); }}/>
+        <Button text="Paper"  onClick={()=>{handelOutcome('paper'); }}/>
+        <Button text="Scissors"  onClick={()=>{handelOutcome('scissors'); }}/>
+        <Button text="Spock"  onClick={()=>{handelOutcome('Spock'); }}/>
+        <Button text="Lizard"  onClick={()=>{handelOutcome('lizard'); }}/>
     </div>
   )
 }
