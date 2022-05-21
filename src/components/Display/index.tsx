@@ -1,12 +1,15 @@
 import Image from "../Image"
 import incognito from "../../images/incognito.png"
-
-const Display = () => {
+interface DisplayProps{
+  playerImage:string,
+  computerImage:string
+}
+const Display = ({playerImage,computerImage}:DisplayProps) => {
   return (
     <div>
-<Image src={incognito} alt="incognito" width="200px" height="200px"/>
+<Image src={playerImage} alt="incognito" width="200px" height="200px"/>
 <h1>VS.</h1>
-<Image src={incognito} alt="incognito" width="200px" height="200px"/>
+<Image src={computerImage} alt="incognito" width="200px" height="200px"/>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useState, ChangeEvent, FormEventHandler } from "react";
 import InfoBar from "./components/InfoBar";
 import Display from "./components/Display";
 import ActionBar from "./components/ActionBar";
+import incognito from "./images/incognito.png"
 
 function App() {
   const [showForm, setShowForm] = useState(true);
@@ -10,8 +11,8 @@ function App() {
   const [playerName, setPlayerName] = useState(``);
   const [playerPoints, setPlayerPoints] = useState(0);
   const [computerPoints, setComputerPoints] = useState(0);
- 
-
+ const [playerImage, setPlayerImage] = useState(incognito);
+ const [computerImage, setComputerImage] = useState(incognito);
   const handelName = (event: ChangeEvent<HTMLInputElement>) =>
     setPlayerName(event.currentTarget.value);
 
@@ -119,7 +120,7 @@ function App() {
       {showGame && (
         <>
           <InfoBar playerName={playerName} playerPoints={playerPoints} computerPoints={computerPoints}/>
-          <Display />
+          <Display playerImage={playerImage} computerImage={computerImage}/>
           <ActionBar handelOutcome={handelOutcome} />
         </>
       )}
