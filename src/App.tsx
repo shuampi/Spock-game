@@ -8,6 +8,9 @@ function App() {
   const [showForm, setShowForm] = useState(true);
   const [showGame, setShowGame] = useState(true); // when submit name hide form and will show the game
   const [playerName, setPlayerName] = useState(``);
+  const [playerPoints, setPlayerPoints] = useState(0);
+  const [computerPoints, setComputerPoints] = useState(0);
+  const [playerSelection, setPlayerSelection] = useState('')
 
   const handelName = (event: ChangeEvent<HTMLInputElement>) =>
     setPlayerName(event.currentTarget.value);
@@ -18,36 +21,39 @@ function App() {
     //setShowGame(!showGame)
   };
   const handelOutcome = () => {
-    let playerSelection: string;
-    playerSelection = "Spoke";
-    const computerOutcomes = ["rock", "paper", "scissors", "lizard", "Spoke"];
+    
+    const computerOutcomes = ["rock", "paper", "scissors", "lizard", "Spock"];
 
     let computerSelection =
       computerOutcomes[Math.floor(Math.random() * computerOutcomes.length)];
     console.log("computerSelection", computerSelection);
-
+    console.log('playerSelection', playerSelection)
     if (
       playerSelection === "rock" &&
       (computerSelection === "lizard" || computerSelection === "scissors")
     ) {
       console.log("player wins ");
+      setPlayerPoints(playerPoints + 1)
     } else if (
       playerSelection === "rock" &&
-      (computerSelection === "Spoke" || computerSelection === "paper")
+      (computerSelection === "Spock" || computerSelection === "paper")
     ) {
       console.log("player loses ");
+      setComputerPoints(computerPoints + 1)
     } else if (playerSelection === "rock" && computerSelection === "rock") {
       console.log(`It's a draw`);
     } else if (
       playerSelection === "paper" &&
-      (computerSelection === "rock" || computerSelection === "Spoke")
+      (computerSelection === "rock" || computerSelection === "Spock")
     ) {
       console.log("player wins ");
+      setPlayerPoints(playerPoints + 1)
     } else if (
       playerSelection === "paper" &&
       (computerSelection === "lizard" || computerSelection === "scissors")
     ) {
       console.log("player loses ");
+      setComputerPoints(computerPoints + 1)
     } else if (playerSelection === "paper" && computerSelection === "paper") {
       console.log(`It's a draw`);
     } else if (
@@ -55,11 +61,13 @@ function App() {
       (computerSelection === "paper" || computerSelection === "lizard")
     ) {
       console.log("player wins ");
+      setPlayerPoints(playerPoints + 1)
     } else if (
       playerSelection === "scissors" &&
-      (computerSelection === "rock" || computerSelection === "Spoke")
+      (computerSelection === "rock" || computerSelection === "Spock")
     ) {
       console.log("player loses ");
+      setComputerPoints(computerPoints + 1)
     } else if (
       playerSelection === "scissors" &&
       computerSelection === "scissors"
@@ -67,27 +75,31 @@ function App() {
       console.log(`It's a draw`);
     } else if (
       playerSelection === "lizard" &&
-      (computerSelection === "paper" || computerSelection === "Spoke")
+      (computerSelection === "paper" || computerSelection === "Spock")
     ) {
       console.log("player wins ");
+      setPlayerPoints(playerPoints + 1)
     } else if (
       playerSelection === "lizard" &&
       (computerSelection === "rock" || computerSelection === "scissors")
     ) {
       console.log("player loses ");
+      setComputerPoints(computerPoints + 1)
     } else if (playerSelection === "lizard" && computerSelection === "lizard") {
       console.log(`It's a draw`);
     } else if (
-      playerSelection === "Spoke" &&
+      playerSelection === "Spock" &&
       (computerSelection === "rock" || computerSelection === "scissors")
     ) {
       console.log("player wins ");
+      setPlayerPoints(playerPoints + 1)
     } else if (
-      playerSelection === "Spoke" &&
+      playerSelection === "Spock" &&
       (computerSelection === "paper" || computerSelection === "lizard")
     ) {
       console.log("player loses ");
-    } else if (playerSelection === "Spoke" && computerSelection === "Spoke") {
+      setComputerPoints(computerPoints + 1)
+    } else if (playerSelection === "Spock" && computerSelection === "Spock") {
       console.log(`It's a draw`);
     }
   };
@@ -96,7 +108,7 @@ function App() {
     <div>
       {showForm && (
         <>
-          <h1>Welcome to rock, paper, scissors, lizard, Spoke game!</h1>
+          <h1>Welcome to rock, paper, scissors, lizard, Spock game!</h1>
           <UserForm
             handelName={handelName}
             playerName={playerName}
@@ -106,9 +118,9 @@ function App() {
       )}
       {showGame && (
         <>
-          <InfoBar playerName={playerName} />
+          <InfoBar playerName={playerName} playerPoints={playerPoints} computerPoints={computerPoints}/>
           <Display />
-          <ActionBar handelOutcome={handelOutcome} />
+          <ActionBar handelOutcome={handelOutcome} setPlayerSelection={setPlayerSelection} />
         </>
       )}
     </div>
