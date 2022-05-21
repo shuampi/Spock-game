@@ -3,7 +3,12 @@ import { useState, ChangeEvent, FormEventHandler } from "react";
 import InfoBar from "./components/InfoBar";
 import Display from "./components/Display";
 import ActionBar from "./components/ActionBar";
-import incognito from "./images/incognito.png"
+import incognito from "./images/incognito.png";
+import rock from "./images/rock_left.webp"
+import paper from "./images/paper_right.png"
+import scissors from "./images/scissors_left.jpg"
+import lizard from "./images/Lizard_right.webp"
+import Spock from "./images/spoke.webp"
 
 function App() {
   const [showForm, setShowForm] = useState(true);
@@ -11,8 +16,8 @@ function App() {
   const [playerName, setPlayerName] = useState(``);
   const [playerPoints, setPlayerPoints] = useState(0);
   const [computerPoints, setComputerPoints] = useState(0);
- const [playerImage, setPlayerImage] = useState(incognito);
- const [computerImage, setComputerImage] = useState(incognito);
+  const [playerImage, setPlayerImage] = useState(incognito);
+  const [computerImage, setComputerImage] = useState(incognito);
   const handelName = (event: ChangeEvent<HTMLInputElement>) =>
     setPlayerName(event.currentTarget.value);
 
@@ -21,26 +26,39 @@ function App() {
     setShowForm(!showForm);
     //setShowGame(!showGame)
   };
-  const handelOutcome = (playerSelection:string) => {
-    
+  const handelOutcome = (playerSelection: string) => {
     const computerOutcomes = ["rock", "paper", "scissors", "lizard", "Spock"];
 
     let computerSelection =
       computerOutcomes[Math.floor(Math.random() * computerOutcomes.length)];
     console.log("computerSelection", computerSelection);
-    console.log('playerSelection', playerSelection)
+    console.log("playerSelection", playerSelection);
+
+    if(computerSelection==='rock'){
+      setComputerImage(rock);
+    } else if(computerSelection==='paper'){
+      setComputerImage(paper);
+    }else if(computerSelection==='scissors'){
+      setComputerImage(scissors);
+    }else if(computerSelection==='lizard'){
+      setComputerImage(lizard);
+    }else if(computerSelection==='Spock'){
+      setComputerImage(Spock);
+    }
+    
+
     if (
       playerSelection === "rock" &&
       (computerSelection === "lizard" || computerSelection === "scissors")
     ) {
       console.log("player wins ");
-      setPlayerPoints(playerPoints + 1)
+      setPlayerPoints(playerPoints + 1);
     } else if (
       playerSelection === "rock" &&
       (computerSelection === "Spock" || computerSelection === "paper")
     ) {
       console.log("player loses ");
-      setComputerPoints(computerPoints + 1)
+      setComputerPoints(computerPoints + 1);
     } else if (playerSelection === "rock" && computerSelection === "rock") {
       console.log(`It's a draw`);
     } else if (
@@ -48,13 +66,13 @@ function App() {
       (computerSelection === "rock" || computerSelection === "Spock")
     ) {
       console.log("player wins ");
-      setPlayerPoints(playerPoints + 1)
+      setPlayerPoints(playerPoints + 1);
     } else if (
       playerSelection === "paper" &&
       (computerSelection === "lizard" || computerSelection === "scissors")
     ) {
       console.log("player loses ");
-      setComputerPoints(computerPoints + 1)
+      setComputerPoints(computerPoints + 1);
     } else if (playerSelection === "paper" && computerSelection === "paper") {
       console.log(`It's a draw`);
     } else if (
@@ -62,13 +80,13 @@ function App() {
       (computerSelection === "paper" || computerSelection === "lizard")
     ) {
       console.log("player wins ");
-      setPlayerPoints(playerPoints + 1)
+      setPlayerPoints(playerPoints + 1);
     } else if (
       playerSelection === "scissors" &&
       (computerSelection === "rock" || computerSelection === "Spock")
     ) {
       console.log("player loses ");
-      setComputerPoints(computerPoints + 1)
+      setComputerPoints(computerPoints + 1);
     } else if (
       playerSelection === "scissors" &&
       computerSelection === "scissors"
@@ -79,13 +97,13 @@ function App() {
       (computerSelection === "paper" || computerSelection === "Spock")
     ) {
       console.log("player wins ");
-      setPlayerPoints(playerPoints + 1)
+      setPlayerPoints(playerPoints + 1);
     } else if (
       playerSelection === "lizard" &&
       (computerSelection === "rock" || computerSelection === "scissors")
     ) {
       console.log("player loses ");
-      setComputerPoints(computerPoints + 1)
+      setComputerPoints(computerPoints + 1);
     } else if (playerSelection === "lizard" && computerSelection === "lizard") {
       console.log(`It's a draw`);
     } else if (
@@ -93,17 +111,19 @@ function App() {
       (computerSelection === "rock" || computerSelection === "scissors")
     ) {
       console.log("player wins ");
-      setPlayerPoints(playerPoints + 1)
+      setPlayerPoints(playerPoints + 1);
     } else if (
       playerSelection === "Spock" &&
       (computerSelection === "paper" || computerSelection === "lizard")
     ) {
       console.log("player loses ");
-      setComputerPoints(computerPoints + 1)
+      setComputerPoints(computerPoints + 1);
     } else if (playerSelection === "Spock" && computerSelection === "Spock") {
       console.log(`It's a draw`);
     }
   };
+
+  
 
   return (
     <div>
@@ -119,9 +139,13 @@ function App() {
       )}
       {showGame && (
         <>
-          <InfoBar playerName={playerName} playerPoints={playerPoints} computerPoints={computerPoints}/>
-          <Display playerImage={playerImage} computerImage={computerImage}/>
-          <ActionBar handelOutcome={handelOutcome} />
+          <InfoBar
+            playerName={playerName}
+            playerPoints={playerPoints}
+            computerPoints={computerPoints}
+          />
+          <Display playerImage={playerImage} computerImage={computerImage} />
+          <ActionBar handelOutcome={handelOutcome}  setPlayerImage={setPlayerImage}/>
         </>
       )}
     </div>

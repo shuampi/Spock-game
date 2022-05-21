@@ -1,5 +1,4 @@
 import Image from "../Image"
-import incognito from "../../images/incognito.png"
 interface DisplayProps{
   playerImage:string,
   computerImage:string
