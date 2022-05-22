@@ -13,7 +13,7 @@ import style from "./css.module.css"
 
 function App() {
   const [showForm, setShowForm] = useState(true);
-  const [showGame, setShowGame] = useState(true); // when submit name hide form and will show the game
+  const [showGame, setShowGame] = useState(false); // when submit name hide form and will show the game
   const [playerName, setPlayerName] = useState(``);
   const [playerPoints, setPlayerPoints] = useState(0);
   const [computerPoints, setComputerPoints] = useState(0);
@@ -35,7 +35,7 @@ const handelReset=()=>{
   const handelSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     setShowForm(!showForm);
-    //setShowGame(!showGame)
+    setShowGame(!showGame)
   };
 
   // const handelTransitionImages =()=>{
