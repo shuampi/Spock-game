@@ -1,5 +1,8 @@
 .container{
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
 }
 .aside{
     min-height: 5rem;
