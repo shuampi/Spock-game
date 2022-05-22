@@ -1,14 +1,15 @@
-import UserForm from "./components/UserForm";
+import UserForm from "../UserForm";
 import { useState, ChangeEvent, FormEventHandler } from "react";
-import InfoBar from "./components/InfoBar";
-import Display from "./components/Display";
-import ActionBar from "./components/ActionBar";
-import incognito from "./images/incognito.png";
-import rock from "./images/rock_left.webp"
-import paper from "./images/paper_right.png"
-import scissors from "./images/scissors_left.jpg"
-import lizard from "./images/Lizard_right.webp"
-import Spock from "./images/spoke.webp"
+import InfoBar from "../InfoBar";
+import Display from "../Display";
+import ActionBar from "../ActionBar";
+import incognito from "../../images/incognito.png";
+import rock from "../../images/rock_left.webp"
+import paper from "../../images/paper_right.png"
+import scissors from "../../images/scissors_left.jpg"
+import lizard from "../../images/Lizard_right.webp"
+import Spock from "../../images/spoke.webp"
+import style from "./css.module.css"
 
 function App() {
   const [showForm, setShowForm] = useState(true);
@@ -81,6 +82,16 @@ const handelComputerImage=()=>
     }else if(computerSelection==='Spock'){
       setComputerImage(Spock);
     }}
+    const imageTransition=()=>{
+      setComputerImage(incognito);
+      setPlayerImage(incognito);
+      setComputerImage(rock);
+      setPlayerImage(rock)
+      setComputerImage(paper);
+      setPlayerImage(paper)
+      //setTimeout((()=>{setComputerImage(rock); setPlayerImage(rock)}),500)
+    }
+    imageTransition();
     handelPlayerImages();
     handelComputerImage();
 
@@ -183,14 +194,14 @@ const handelComputerImage=()=>
   return (
     <div>
       {showForm && (
-        <>
-          <h1>Welcome to rock, paper, scissors, lizard, Spock game!</h1>
+        <section >
+          <h1 className={style.title}>Welcome to rock, paper, scissors, lizard, Spock game!</h1>
           <UserForm
             handelName={handelName}
             playerName={playerName}
             handelSubmit={handelSubmit}
           />
-        </>
+        </section>
       )}
       {showGame && (
         <>

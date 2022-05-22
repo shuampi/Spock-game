@@ -1,0 +1,27 @@
+.container{
+    margin: 0 auto;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    border:3px solid #F8CB2E;
+    border-radius: 5px;
+    padding: 1.5rem 0.6rem;
+    background-color: #F8CB2E;
+}
+
+.inputButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.label{
+
+    text-align: center;
+    margin-left: 2rem;
+    
+}
+input {
+    margin: 1rem 0.5rem;
+    border-radius: 5px;
+    max-width: 150px;
+}

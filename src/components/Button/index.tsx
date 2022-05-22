@@ -7,9 +7,12 @@ interface ButtonProps {
   border?: string,
   radius?: string,
   width?: string,
+  padding?:string,
+  maxWidth?:string,
+  margin?:string
 }
 
-const Button = ({ text, onClick,color,radius, width, border }: ButtonProps) => {
+const Button = ({ text, onClick,color,radius, width, border,padding, maxWidth, margin }: ButtonProps) => {
   return (
     <button
       style={{
@@ -17,8 +20,12 @@ const Button = ({ text, onClick,color,radius, width, border }: ButtonProps) => {
         border: border,
         borderRadius: radius,
         width,
+        padding,
+        maxWidth,
+        margin
       }}
       onClick={onClick}
+      
     >
       {text}
     </button>
