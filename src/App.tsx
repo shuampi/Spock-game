@@ -18,6 +18,8 @@ function App() {
   const [computerPoints, setComputerPoints] = useState(0);
   const [playerImage, setPlayerImage] = useState(incognito);
   const [computerImage, setComputerImage] = useState(incognito);
+  const [showAside, setShowAside] = useState(false);
+  const [displayMessage, setDisplayMessage] = useState('')
 
 
   const handelName = (event: ChangeEvent<HTMLInputElement>) =>
@@ -35,9 +37,20 @@ const handelReset=()=>{
     //setShowGame(!showGame)
   };
 
+  // const handelTransitionImages =()=>{
+  //   const transition =(image:string)=>{
+  //     setComputerImage(image);
+  //     setPlayerImage(image)
+  //   };
+  //   setTimeout(transition(rock),500);
+    
+
+  // }
+
   const handelOutcome = (playerSelection: string) => {
 //set images for player selection
-if(playerSelection==='rock'){
+const handelPlayerImages=()=>
+{if(playerSelection==='rock'){
   setPlayerImage(rock);
 } else if(playerSelection==='paper'){
   setPlayerImage(paper);
@@ -47,7 +60,7 @@ if(playerSelection==='rock'){
   setPlayerImage(lizard);
 }else if(playerSelection==='Spock'){
   setPlayerImage(Spock);
-}
+}}
 
     const computerOutcomes = ["rock", "paper", "scissors", "lizard", "Spock"];
 
@@ -56,7 +69,8 @@ if(playerSelection==='rock'){
     console.log("computerSelection", computerSelection);
     console.log("playerSelection", playerSelection);
 //set images for computer selection
-    if(computerSelection==='rock'){
+const handelComputerImage=()=>
+   { if(computerSelection==='rock'){
       setComputerImage(rock);
     } else if(computerSelection==='paper'){
       setComputerImage(paper);
@@ -66,8 +80,9 @@ if(playerSelection==='rock'){
       setComputerImage(lizard);
     }else if(computerSelection==='Spock'){
       setComputerImage(Spock);
-    }
-    
+    }}
+    handelPlayerImages();
+    handelComputerImage();
 
     if (
       playerSelection === "rock" &&
@@ -75,74 +90,92 @@ if(playerSelection==='rock'){
     ) {
       console.log("player wins ");
       setPlayerPoints(playerPoints + 1);
+      setDisplayMessage('you won!')
+      
     } else if (
       playerSelection === "rock" &&
       (computerSelection === "Spock" || computerSelection === "paper")
     ) {
       console.log("player loses ");
       setComputerPoints(computerPoints + 1);
+      setDisplayMessage('Oh, no! you lost!')
     } else if (playerSelection === "rock" && computerSelection === "rock") {
       console.log(`It's a draw`);
+      setDisplayMessage(`It's a draw!`)
     } else if (
       playerSelection === "paper" &&
       (computerSelection === "rock" || computerSelection === "Spock")
     ) {
       console.log("player wins ");
       setPlayerPoints(playerPoints + 1);
+      setDisplayMessage('you won!')
     } else if (
       playerSelection === "paper" &&
       (computerSelection === "lizard" || computerSelection === "scissors")
     ) {
       console.log("player loses ");
       setComputerPoints(computerPoints + 1);
+      setDisplayMessage('Oh, no! you lost!')
     } else if (playerSelection === "paper" && computerSelection === "paper") {
       console.log(`It's a draw`);
+      setDisplayMessage(`It's a draw!`)
     } else if (
       playerSelection === "scissors" &&
       (computerSelection === "paper" || computerSelection === "lizard")
     ) {
       console.log("player wins ");
       setPlayerPoints(playerPoints + 1);
+      setDisplayMessage('you won!')
     } else if (
       playerSelection === "scissors" &&
       (computerSelection === "rock" || computerSelection === "Spock")
     ) {
       console.log("player loses ");
       setComputerPoints(computerPoints + 1);
+      setDisplayMessage('Oh, no! you lost!')
     } else if (
       playerSelection === "scissors" &&
       computerSelection === "scissors"
     ) {
       console.log(`It's a draw`);
+      setDisplayMessage(`It's a draw!`)
     } else if (
       playerSelection === "lizard" &&
       (computerSelection === "paper" || computerSelection === "Spock")
     ) {
       console.log("player wins ");
       setPlayerPoints(playerPoints + 1);
+      setDisplayMessage('you won!')
     } else if (
       playerSelection === "lizard" &&
       (computerSelection === "rock" || computerSelection === "scissors")
     ) {
       console.log("player loses ");
       setComputerPoints(computerPoints + 1);
+      setDisplayMessage('Oh, no! you lost!')
     } else if (playerSelection === "lizard" && computerSelection === "lizard") {
       console.log(`It's a draw`);
+      setDisplayMessage(`It's a draw!`)
     } else if (
       playerSelection === "Spock" &&
       (computerSelection === "rock" || computerSelection === "scissors")
     ) {
       console.log("player wins ");
       setPlayerPoints(playerPoints + 1);
+      setDisplayMessage('you won!')
     } else if (
       playerSelection === "Spock" &&
       (computerSelection === "paper" || computerSelection === "lizard")
     ) {
       console.log("player loses ");
       setComputerPoints(computerPoints + 1);
+      setDisplayMessage('Oh, no! you lost!')
     } else if (playerSelection === "Spock" && computerSelection === "Spock") {
       console.log(`It's a draw`);
-    }
+      setDisplayMessage(`It's a draw!`)
+    };
+    setShowAside(true);
+    setTimeout(()=>setShowAside(false),2000);
   };
 
   
@@ -167,7 +200,7 @@ if(playerSelection==='rock'){
             computerPoints={computerPoints}
             handelReset={handelReset}
           />
-          <Display playerImage={playerImage} computerImage={computerImage} />
+          <Display playerImage={playerImage} computerImage={computerImage} showAside={showAside} displayMessage={displayMessage}/>
           <ActionBar handelOutcome={handelOutcome}  setPlayerImage={setPlayerImage}/>
         </>
       )}

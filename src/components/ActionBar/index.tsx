@@ -1,11 +1,11 @@
 import React from "react"
 import Button from "../Button"
 import style from "./index.module.css"
-import rock from "../../images/rock_left.webp"
-import paper from "../../images/paper_right.png"
-import scissors from "../../images/scissors_left.jpg"
-import lizard from "../../images/Lizard_right.webp"
-import Spock from "../../images/spoke.webp"
+// import rock from "../../images/rock_left.webp"
+// import paper from "../../images/paper_right.png"
+// import scissors from "../../images/scissors_left.jpg"
+// import lizard from "../../images/Lizard_right.webp"
+// import Spock from "../../images/spoke.webp"
 
 interface ActionBarProps{
     handelOutcome:(playerSelection:string)=>void,
