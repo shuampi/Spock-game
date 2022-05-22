@@ -3,9 +3,12 @@
 }
 .aside{
     min-height: 5rem;
+    margin-top: 2rem;
 
 }
 
 .aside > h1 {
-    margin:0
+    margin:0;
+    text-align: center;
+    
 }
